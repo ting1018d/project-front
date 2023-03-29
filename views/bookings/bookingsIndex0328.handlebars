@@ -1,0 +1,130 @@
+<style>
+.btn-text-left{
+	text-align: left;	
+}
+.btn-text-right{
+	text-align: right;
+}
+
+
+</style>
+
+
+ <div id="quote"></div>
+
+
+{{!-- {{#each bookings}} --}}
+    
+            <div id="quote"></div>
+          
+              {{!-- <p class="card-text">Tennis has always been one of the most popular sporting activities at the 
+              <br></p>
+              <br>
+              <h5 class="card-subtitle text-muted">Booking</h5>
+              <br>Tennis courts may be booked for 60 minutes per session.  Advance booking permitted for up to five days in advance. --}}
+       
+{{!-- {{/each}} --}}
+
+  <script>
+    (function() {
+      var quotes = [
+        {
+          text: "Golf",
+          img:  "http://i.stack.imgur.com/FqBE6.jpg?s=32&g=1"
+        },
+        {
+          text: "Rugby",
+          img:  "https://www.gravatar.com/avatar/ca3e484c121268e4c8302616b2395eb9?s=32&d=identicon&r=PG",
+        }
+      ];
+      var quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote").innerHTML =
+        '<p>' + quote.text + '</p>' +
+        '<img src="' + quote.img + '">';
+    })();
+  </script>
+
+{{facility}}
+
+<hr>
+
+
+<hr>
+
+<div class="container py-3 my-1">
+  <div class="card">
+    <div class="card-body text-center text-muted">
+      <h1>Reviewing your bookings</h1> 
+    </div>
+  </div>  
+</div>
+
+{{#each bookings}}
+
+<div class="container py-0 my-0">
+
+<div class="container py-0 my-0">  
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4">
+
+        <div class="card">
+          <img src="" alt="" class="card-img-top img-fluid">
+          <div class="card-body">
+            <h2 class="card-title">{{facility}}</h2>
+          
+              {{!-- <p class="card-text">Tennis has always been one of the most popular sporting activities at the 
+              <br></p>
+              <br>
+              <h5 class="card-subtitle text-muted">Booking</h5>
+              <br>Tennis courts may be booked for 60 minutes per session.  Advance booking permitted for up to five days in advance. --}}
+          </div>
+        </div>
+
+      </div>
+
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">      
+              <div class="text-muted">
+                <h3>Venue     :</h3>
+                <p>Confirmation number : {{_id}}</p>
+                <h1>{{facility}}</h1>
+              </div>
+              <h5>Time  : {{session}}</h5>
+              <h5>Date : {{bookingDate}}</h5>
+              <br>
+              <div class="row row-cols-1 row-cols-md-2">
+                <div class="col mb-10">
+                  <a href="/bookings/edit/{{_id}}" class="btn btn-light btn-block">Edit</a>
+                </div> 
+                <div class="col mb-12">
+                  <form action="/bookings/{{_id}}?_method=DELETE" method="post">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <input type="submit" class="btn btn-light btn-block" value="Cancel" />
+                  </form>
+                </div>
+              </div>
+
+            </div>  
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+{{!-- if NO booking --}}
+{{else}}
+  <p><h3 class="text-center text-muted">Start your sports jounery now~</h3></p>
+{{/each}}
+
+<div class="container py-5 my-1">
+  <div class="row">
+    <div class="col-md-12">
+    {{!-- to profile --}}
+      <div class="btn-text-right">
+          <a href="/users/profile" type="button" class="btn btn-lg btn-light">Confirm Booking</a>
+      </div>
+    </div>
+  </div>
+</div>  

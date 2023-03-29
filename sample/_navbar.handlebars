@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <div class="container">
+  <a class="navbar-brand" href="#">Notes Sites</a>
+  <button 
+    class="navbar-toggler" 
+    type="button"
+    data-toggle="collapse" 
+    data-target="#navbarNavDropdown" 
+    aria-controls="navbarNavDropdown" 
+    aria-expanded="false" 
+    aria-label="Toggle navigation"
+  />
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      
+      {{#if user}}
+      <li class="nav-item dropdown">
+        <a 
+        class="nav-link dropdown-toggle" 
+        href="#" 
+        role="button" 
+        data-toggle="dropdown" 
+        aria-expanded="false"
+
+        >Notes</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/ideas">Notes</a>
+            <a class="dropdown-item" href="/ideas/add">Add Notes</a>
+          </div>
+      </li>
+      <div>
+        {{!-- {{user}} :
+        {{@name}} 
+        :{
+          {{@name}} 
+          : 
+          {{this}},} --}}
+      </div>
+
+      <li class="nav item">
+        <a class="nav-link" href="/users/logout">Logout</a>
+      </li>
+
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/login">Login</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/users/register">Register</a>
+      </li>
+      {{/if}}
+    </ul>
+  </div>
+</div>
+</nav>

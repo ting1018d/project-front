@@ -1,0 +1,100 @@
+<div class="container py-2 my-2">  
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                        <h3 class="text-center">JOIN US !</h3>
+                    </div>
+                    
+                    <form action="/users/register" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label> 
+                                <input 
+                                type="text" 
+                                name="name" 
+                                class="form-control" 
+                                value="{{name}}"
+                                />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label> 
+                            <input 
+                            type="email" 
+                            name="email" 
+                            class="form-control" 
+                            value="{{email}}"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input 
+                            type="password" 
+                            name="password" 
+                            class="form-control"
+                            value="{{password}}"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input 
+                            type="password" 
+                            name="password2" 
+                            class="form-control"
+                            value="{{password2}}"
+                            />
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                
+                                <div class="col-mb-0">
+                                    <button type="submit" class="btn btn-light">Sign Up</button>
+                                </div>
+                    
+                                {{!-- <div class="col-md-9">
+                                    <a href="/users/login" type="" class="btn btn-light">Log In ? </a>
+                                </div> --}}
+                        
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+<div>
+
+                        <div class="col mb-4">
+                            <div class="card">
+                            <img src="" alt="" class="card-img-top img-fluid">
+                            <div class="card-body">
+                                <h2 class="card-title">Become a member</h2>
+                                <p class="card-text">Tennis has always been one of the most popular sporting activities at the 
+                                <br></p>
+                                <br>
+                                <h5 class="card-subtitle text-muted">Join Now !</h5>
+                                <br>Tennis courts may be booked for 60 minutes per session.  Advance booking permitted for up to five days in advance.
+                            </div>
+                            </div>     
+                        </div>
+
+                        <div class="col mb-4">
+                            <div class="card">
+                            <img src="" alt="" class="card-img-top img-fluid">
+                            <div class="card-body">
+                                <h2 class="card-title">Already a member ? </h2>
+                                <p class="card-text">Tennis has always been one of the most popular sporting activities at the 
+                                <br></p>
+                                <br>
+                                <h5 class="card-subtitle text-muted">Welcome back !</h5>
+                                <br>
+                                    <div class="col-md-0">
+                                        <a href="/users/login" type="" class="btn btn-light">Click Me </a>
+                                    </div>
+                                <p class="card-text"><small class="text-muted">Text...</small></p>
+                            </div>
+                            </div>
+                                 
+                        </div>
+</div>

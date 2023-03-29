@@ -1,0 +1,215 @@
+  {{#each errors}}
+  <div class="alert alert-danger">{{text}}</div>
+  {{else}}
+  {{/each}}
+
+  <style>
+      .background {
+          background-image: url("");
+          background-size: 100%;
+          width: 1024px;
+          height: 768px;
+          background-repeat:no-repeat;
+      }
+        .btn-text-left{
+        text-align: left;	
+        }
+        .btn-text-right{
+        text-align: right;
+        } 
+  </style>
+
+  {{!-- <div class="background mx-auto"> --}}
+
+<div class="container py-3 my-3">
+  <div class="card">
+    <div class="card-body text-center text-muted">
+      <h1>Add your bookings</h1> 
+    </div>
+  </div>  
+</div>
+<p>Check facCode by manual </p>
+<p id="demo"></p>
+
+<section class="search-banner text-white" id="search-banner">
+
+<div class="container py-0 my-0">  
+    {{!-- layout adjust--}}
+    <div class="row row-cols-1 row-cols-md-2"> 
+      <div class="col mb-4">
+
+        <div class="card">
+          <img src="" alt="" class="card-img-top img-fluid">
+            <div class="vard card-body">
+                <p class="font-weight-light text-dark">Venue</p>
+                <p class="font-weight-block text-dark">Krystal Country Club</p>
+     
+            <form action="/bookings/add" method="post">
+                 <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group ">      
+                                       	<input 
+                                          class="form-control" 
+                                          id = "bookingDate"  
+                                          type = "date"
+                                          name="bookingDate"
+                                          placeholder = "Choose a Date" 
+                                          class = "textbox-n"
+                                          onfocus = "(this.type = 'date')"  
+                                          value="{{bookingDate}}"style="width: 100%">
+                                </div>
+                            </div>
+{{!--                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <select 
+                                      id="session" 
+                                      class="form-control"
+                                      name = "session"
+                                      value="{{session}}">
+                                        <option selected>Time</option>
+                                        <option value ="">10:00-11:00</option>
+                                        <option value ="">11:00-12:00</option>
+                                        <option value ="">12:00-13:00</option>
+                                        <option value ="">13:00-14:00</option>
+                                        <option value ="">14:00-15:00</option>
+                                        <option value ="">15:00-16:00</option>
+                                        <option value ="">16:00-17:00</option>
+                                        <option value ="">17:00-18:00</option>
+                                        <option value ="">18:00-19:00</option>
+                                        <option value ="">19:00-20:00</option>
+                                    </select>
+
+                                    {{!-- checking !! --}}
+                                          {{!-- <label for="session">Session</label>
+                                            <input
+                                                type="text" 
+                                                id="session" 
+                                                class="form-control" 
+                                                name="session" 
+                                                value="{{session}}"
+                                            ></input> 
+
+                                </div>
+                            </div>
+--}}
+                        <div class="col-md-4">                      
+                            <div class="form-group">
+                                <select class="custom-select" id="mySelect" name="facility" value="">
+                                    <option selected disabled>Select Sport</option>
+                                    <option value="Golf">Golf</option>
+                                    <option value="Rugby">Rugby</option>
+                                    <option value="Squash C1">Squash Court 1</option>
+                                    <option value="Squash C2">Squash Court 2</option>
+                                    <option value="Squash C3">Squash Court 3</option>
+                                    <option value="Squash C4">Squash Court 4</option>
+                                    <option value="Tennis C1">Tennis Court 1</option>
+                                    <option value="Tennis C2">Tennis Court 2</option>
+                                    <option value="Tennis C3">Tennis Court 3</option>
+                                    <option value="Tennis C4">Tennis Court 4</option>
+                                    <option value="Tennis C5">Tennis Court 5</option>
+                                    <option value="Tennis C6">Tennis Court 6</option>
+                                    <option value="Tennis C7">Tennis Court 7</option>
+                                    <option value="Table Tennis C1">Table Tennis Court 1</option>
+                                    <option value="Table Tennis C2">Table Tennis Court 2</option>
+                                    <option value="Table Tennis C3">Table Tennis Court 3</option>
+                                    <option value="Table Tennis C4">Table Tennis Court 4</option>
+                                </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="font-weight-light text-dark">Search available time</p>
+                        </div>
+
+                        <div class="row">
+                                
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-light pl-5 pr-5" name="action" value="checkSessions">Search</button>
+                            </div>
+                        </div>
+  
+    </div>
+ </div>
+</div>
+  {{#if sessions}}
+      <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">        
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="text-muted">
+                        <h3>Available Time</h3>
+                        </div>
+                    </div>    
+                        <div class="col mb-4">                    
+                            <button type="submit" class="btn btn-light" name="action" value="addBooking">Add Booking</button>
+                        </div>
+                    </div>
+              
+            <div class="row row-cols-1 row-cols-md-1">
+                <div class="col mb-4">
+
+                
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Facility</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {{#each sessions}}
+                
+                            <tr>
+                            <th scope="row">{{session}}</th>
+                            <td>{{fac_name}}</td>
+                            <td>{{bookingDate}}</td>
+                            <td>{{session_desc}}</td>
+                            <td>{{status}}</td>
+                            <td>
+                                <input type="radio" class="form-radio-input" id="radio" name="session_selected" value="{{session}}">
+                                <label class="form-check-label" for="check"></label>
+                            </td>
+                            </tr>
+
+                        {{/each}}
+                        </tbody>
+                    </table>
+                {{/if}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+{{!-- session table --}}
+
+
+
+{{!-- <script>
+ window.onload = function() {
+    var selItem = sessionStorage.getItem("SelItem");  
+    $('#sort-item').val(selItem);
+    }
+    $('#sort-item').change(function() { 
+        var selVal = $(this).val();
+        sessionStorage.setItem("SelItem", selVal);
+    });
+</script> --}}
+
+
+<script> 
+
+function myFunction() { 
+var x = document.getElementById("mySelect").value; 
+document.getElementById("demo").innerHTML = x; 
+} 
+
+</script> 
